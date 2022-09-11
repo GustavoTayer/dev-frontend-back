@@ -1,0 +1,17 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  database:
+    image: postgres:13
+    container_name: lead
+    environment:
+      POSTGRES_PASSWORD: 123
+      POSTGRES_USER: postgres
+      POSTGRES_DB: lead
+      APP_DB_NAME: lead
+    ports:
+      - 5431:5432
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8081  
