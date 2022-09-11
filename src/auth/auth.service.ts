@@ -13,7 +13,7 @@ import {genSaltSync, hashSync, compareSync} from 'bcrypt'
 export class AuthService {
     constructor(private readonly userService: UserService,
         private readonly jwtService: JwtService) { }
-
+        
     async validate(name: string, password: string): Promise<User> {
         const user = await this.userService.findByName(name)
         if (!user || !this.validatePassword(user, password)) {
