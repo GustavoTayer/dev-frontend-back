@@ -15,7 +15,7 @@ import { UserModule } from './user/user.module';
       password: '123',
       database: 'lead',
       entities: [],
-      synchronize: false,
+      synchronize: true,
       autoLoadEntities: true
     }),
     UserModule,
