@@ -5,7 +5,7 @@ https://docs.nestjs.com/providers#services
 import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUser } from 'src/user/dto/createUser.dto';
-import { User } from 'src/user/user.entity';
+import { User } from 'src/user/model/user.entity';
 import { UserService } from 'src/user/user.service';
 import {genSaltSync, hashSync, compareSync} from 'bcrypt'
 
@@ -13,7 +13,7 @@ import {genSaltSync, hashSync, compareSync} from 'bcrypt'
 export class AuthService {
     constructor(private readonly userService: UserService,
         private readonly jwtService: JwtService) { }
-        
+
     async validate(name: string, password: string): Promise<User> {
         const user = await this.userService.findByName(name)
         if (!user || !this.validatePassword(user, password)) {

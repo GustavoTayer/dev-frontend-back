@@ -1,5 +1,8 @@
+import { Role } from "../model/role.enum";
+
 export class UserResponse {
     id: number;
     name: string;
-    password: string;
+    email: string;
+    role?: Role;
 }

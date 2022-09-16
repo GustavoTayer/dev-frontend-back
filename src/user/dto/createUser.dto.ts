@@ -1,4 +1,5 @@
-import { IsString } from "class-validator";
+import { IsEmail, IsString } from "class-validator";
+import { Role } from "../model/role.enum";
 
 export class CreateUser {
     @IsString()
@@ -7,4 +8,9 @@ export class CreateUser {
     password: string;
     @IsString()
     confirmPassword: string;
+    
+    @IsEmail()
+    email: string;
+
+    role?: Role;
 }

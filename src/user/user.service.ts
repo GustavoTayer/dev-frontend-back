@@ -2,13 +2,12 @@
 https://docs.nestjs.com/providers#services
 */
 
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUser } from './dto/createUser.dto';
-import { User } from './user.entity';
-import { createCipheriv, randomBytes, scrypt } from 'crypto';
-import { promisify } from 'util';
+import { Role } from './model/role.enum';
+import { User } from './model/user.entity';
 
 
 @Injectable()
@@ -19,7 +18,9 @@ export class UserService {
        
         const userToSave = this.repository.create({
             name: user.name,
-            password: user.password
+            password: user.password,
+            email: user.email,
+            role: user.role || Role.TEACHER
         })
 
         return this.repository.save(userToSave)
