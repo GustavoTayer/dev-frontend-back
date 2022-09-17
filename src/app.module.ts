@@ -1,3 +1,5 @@
+import { CourseModule } from './course/course.module';
+import { LeadModule } from './lead/lead.module';
 import { AuthModule } from './auth/auth.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -7,6 +9,8 @@ import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    CourseModule,
+    LeadModule,
     ConfigModule.forRoot(),
     AuthModule,
     TypeOrmModule.forRoot({
@@ -18,7 +22,8 @@ import { ConfigModule } from '@nestjs/config';
       database: process.env.DATABASE_NAME,
       entities: [],
       synchronize: true,
-      autoLoadEntities: true
+      autoLoadEntities: true,
+      logging: false
     }),
     UserModule,
   ],
