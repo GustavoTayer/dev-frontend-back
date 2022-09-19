@@ -5,12 +5,11 @@ services:
     ports: 
       - 8080:8080
     environment:
-       DB: mongodb://mongo:27017/cnv
        DATABASE_USER: postgres
-       DATABASE_PASSWORD: 0M72k%10
-       DATABASE_HOST: back-leads.c2tcvwezxaxn.us-east-1.rds.amazonaws.com
+       DATABASE_PASSWORD: 123
+       DATABASE_HOST: localhost
        DATABASE_PORT: 5432
-       DATABASE_NAME: leads
+       DATABASE_NAME: lead
        PORT: 8080
   database:
     image: postgres:13
